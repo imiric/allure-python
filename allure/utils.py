@@ -160,3 +160,15 @@ def host_tag():
     Return a special host_tag value, representing current host.
     """
     return socket.gethostname()
+
+
+def mangle_testnames(names):
+    """
+    Return clean test names
+
+    This was backported from pytest v2.9.0.
+
+    :param names: list of test names
+    :returns: list of clean test names
+    """
+    return [n.replace('.py', '') for n in names if n != '()']
